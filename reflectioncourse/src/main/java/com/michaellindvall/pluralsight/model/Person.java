@@ -7,21 +7,32 @@
  */
 package com.michaellindvall.pluralsight.model;
 
+import com.michaellindvall.pluralsight.annotation.Column;
+import com.michaellindvall.pluralsight.annotation.PrimaryKey;
+
 /**
  * @author mlindvall
  */
 public class Person {
+    @PrimaryKey
+    private long id;
+
+    @Column
     private int age;
+
+    @Column
     private String name;
 
-    public Person() {}
+    public Person() {
+    }
+
     public Person(final int age, final String name) {
         this.age = age;
         this.name = name;
     }
 
     public static Person of(final int age, final String name) {
-        return new Person(age,name);
+        return new Person(age, name);
     }
 
     public int getAge() {
@@ -40,10 +51,19 @@ public class Person {
         this.name = name;
     }
 
+    public long getId() {
+        return id;
+    }
+
+    public void setId(final long id) {
+        this.id = id;
+    }
+
     @Override
     public String toString() {
         return "Person{" +
-                "age=" + age +
+                "id=" + id +
+                ", age=" + age +
                 ", name='" + name + '\'' +
                 '}';
     }
