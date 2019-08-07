@@ -67,6 +67,13 @@ public class Metamodel {
                 " (" + columnElement + ") values (" + questionMarksElement + ")";
     }
 
+    public String buildSelectRequest() {
+        // select id, name, age from Person where id = ?
+        final String columnElement = buildColumnNames();
+        return "select " + columnElement + " from " + this.clss.getSimpleName() +
+                " Where " + getPrimaryKey().getName() + " = ?";
+    }
+
     private String buildQuestionMarkElement() {
         final int numberOfColumns = getColumns().size() + 1;
         return IntStream.range(0, numberOfColumns)
@@ -83,4 +90,5 @@ public class Metamodel {
         columnNames.add(0, primateKeyColumnName);
         return String.join(", ", columnNames);
     }
+
 }

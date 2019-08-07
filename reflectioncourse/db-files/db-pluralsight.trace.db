@@ -35,3 +35,12 @@ Caused by: java.lang.IllegalStateException: The file is locked: nio:C:/Users/mli
 	at org.h2.mvstore.FileStore.open(FileStore.java:173)
 	at org.h2.mvstore.MVStore.<init>(MVStore.java:350)
 	... 21 more
+2019-08-07 14:17:43 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "METAMODELWHERE" not found; SQL statement:
+select id, age, name from MetamodelWhere id ? [42102-197]
+2019-08-07 14:19:06 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "METAMODELWHERE" not found; SQL statement:
+select id, age, name from MetamodelWhere id = ? [42102-197]
+2019-08-07 14:21:20 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "PERSONWHERE" not found; SQL statement:
+select id, age, name from PersonWhere id = ? [42102-197]
