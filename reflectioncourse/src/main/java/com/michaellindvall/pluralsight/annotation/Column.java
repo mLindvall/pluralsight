@@ -1,5 +1,5 @@
 /**
- * (c) Save-a-lot
+ * (c) Michael Lindvall
  *
  * @author mlindvall
  * Column.java

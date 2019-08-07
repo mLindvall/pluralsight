@@ -1,7 +1,7 @@
 /**
- * (c) Save-a-lot
+ * (c) Michael Lindvall
  *
- * @author mlin014
+ * @author mlindvall
  * Metamodel.java
  * Aug 06, 2019
  */
@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 /**
- * @author mlin014
+ * @author mlindvall
  */
 public class Metamodel {
 

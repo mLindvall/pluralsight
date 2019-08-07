@@ -1,7 +1,7 @@
 /**
- * (c) Save-a-lot
+ * (c) Michael Lindvall
  *
- * @author mlin014
+ * @author mlindvall
  * DBLauncher.java
  * Aug 06, 2019
  */
@@ -12,7 +12,7 @@ import org.h2.tools.Server;
 import java.sql.SQLException;
 
 /**
- * @author mlin014
+ * @author mlindvall
  */
 public class DBLauncher {
 

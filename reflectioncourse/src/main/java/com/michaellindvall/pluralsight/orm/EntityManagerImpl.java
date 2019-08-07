@@ -1,7 +1,7 @@
 /**
- * (c) Save-a-lot
+ * (c) Michael Lindvall
  *
- * @author mlin014
+ * @author mlindvall
  * EntityManagerImpl.java
  * Aug 06, 2019
  */
@@ -16,7 +16,7 @@ import java.sql.*;
 import java.util.concurrent.atomic.AtomicLong;
 
 /**
- * @author mlin014
+ * @author mlindvall
  */
 public class EntityManagerImpl<T> implements EntityManager<T> {
     private AtomicLong idGenerator = new AtomicLong(0L);

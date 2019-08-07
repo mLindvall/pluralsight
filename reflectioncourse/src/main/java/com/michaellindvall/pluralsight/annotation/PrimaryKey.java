@@ -1,7 +1,7 @@
 /**
- * (c) Save-a-lot
+ * (c) Michael Lindvall
  *
- * @author mlin014
+ * @author mlindvall
  * PrimaryKey.java
  * Aug 06, 2019
  */
@@ -12,7 +12,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * @author mlin014
+ * @author mlindvall
  */
 @Retention(RetentionPolicy.RUNTIME)
 public @interface PrimaryKey {

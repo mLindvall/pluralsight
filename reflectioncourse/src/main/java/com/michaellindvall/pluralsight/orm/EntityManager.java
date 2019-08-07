@@ -1,19 +1,17 @@
 /**
- * (c) Save-a-lot
+ * (c) Michael Lindvall
  *
- * @author mlin014
+ * @author mlindvall
  * EntityManager.java
  * Aug 06, 2019
  */
 package com.michaellindvall.pluralsight.orm;
 
-import com.michaellindvall.pluralsight.model.Person;
-
 import java.lang.reflect.InvocationTargetException;
 import java.sql.SQLException;
 
 /**
- * @author mlin014
+ * @author mlindvall
  */
 public interface EntityManager<T> {
     static <T> EntityManager<T> of(Class<?> clss) {

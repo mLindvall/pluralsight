@@ -1,7 +1,7 @@
 /**
- * (c) Save-a-lot
+ * (c) Michael Lindvall
  *
- * @author mlin014
+ * @author mlindvall
  * WritingObjects.java
  * Aug 06, 2019
  */
@@ -10,11 +10,8 @@ package com.michaellindvall.pluralsight;
 import com.michaellindvall.pluralsight.model.Person;
 import com.michaellindvall.pluralsight.orm.EntityManager;
 
-import java.sql.SQLException;
-import java.sql.SQLOutput;
-
 /**
- * @author mlin014
+ * @author mlindvall
  */
 public class WritingObjects {
     public static void main(String[] args) throws Exception {

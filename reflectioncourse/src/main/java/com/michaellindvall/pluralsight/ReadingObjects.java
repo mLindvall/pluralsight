@@ -1,7 +1,7 @@
 /**
- * (c) Save-a-lot
+ * (c) Michael Lindvall
  *
- * @author mlin014
+ * @author mlindvall
  * ReadingObjects.java
  * Aug 07, 2019
  */
@@ -11,7 +11,7 @@ import com.michaellindvall.pluralsight.model.Person;
 import com.michaellindvall.pluralsight.orm.EntityManager;
 
 /**
- * @author mlin014
+ * @author mlindvall
  */
 public class ReadingObjects {
     public static void main(String[] args) throws Exception {
