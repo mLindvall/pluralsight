@@ -12,13 +12,16 @@ import com.michaellindvall.pluralsight.util.Metamodel;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.concurrent.atomic.AtomicLong;
 
 /**
  * @author mlindvall
  */
-public class EntityManagerImpl<T> implements EntityManager<T> {
+public abstract class AbstractEntityManager<T> implements EntityManager<T> {
     private AtomicLong idGenerator = new AtomicLong(0L);
 
     @Override
@@ -26,17 +29,19 @@ public class EntityManagerImpl<T> implements EntityManager<T> {
         Metamodel metamodel = Metamodel.of(t.getClass());
 
         String sql = metamodel.buildInsertRequest();
-        PreparedStatement statement = preparedStatementWith(sql).andParameters(t);
-        statement.executeUpdate();
+        try (PreparedStatement statement = preparedStatementWith(sql).andParameters(t);) {
+            statement.executeUpdate();
+        }
     }
 
     @Override
     public T find(final Class<T> clss, final Object primaryKey) throws SQLException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
         Metamodel metamodel = Metamodel.of(clss);
         String sql = metamodel.buildSelectRequest();
-        PreparedStatement statement = preparedStatementWith(sql).andPrimarykey(primaryKey);
-        ResultSet resultSet = statement.executeQuery();
-        return buildInstanceFrom(clss, resultSet);
+        try(PreparedStatement statement = preparedStatementWith(sql).andPrimarykey(primaryKey);) {
+            ResultSet resultSet = statement.executeQuery();
+            return buildInstanceFrom(clss, resultSet);
+        }
     }
 
     private T buildInstanceFrom(final Class<T> clss, final ResultSet resultSet) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException, SQLException {
@@ -69,13 +74,12 @@ public class EntityManagerImpl<T> implements EntityManager<T> {
     }
 
     private PreparedStatementWrapper preparedStatementWith(final String sql) throws SQLException {
-        Connection connection =
-                DriverManager.getConnection(
-                        "jdbc:h2:C:\\Users\\mlin014\\Desktop\\pluralsight-training\\reflectioncourse\\db-files\\db-pluralsight",
-                        "sa", "");
+        Connection connection = buildConnection();
         PreparedStatement statement = connection.prepareStatement(sql);
         return new PreparedStatementWrapper(statement);
     }
+
+    public abstract Connection buildConnection() throws SQLException;
 
     private class PreparedStatementWrapper {
         private PreparedStatement statement;

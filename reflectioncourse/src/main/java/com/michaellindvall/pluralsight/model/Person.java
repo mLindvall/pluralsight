@@ -14,13 +14,14 @@ import com.michaellindvall.pluralsight.annotation.PrimaryKey;
  * @author mlindvall
  */
 public class Person {
-    @PrimaryKey
+
+    @PrimaryKey(name="k_id")
     private long id;
 
-    @Column
+    @Column(name="c_age")
     private int age;
 
-    @Column
+    @Column(name="c_name")
     private String name;
 
     public Person() {

@@ -24,8 +24,8 @@ org.h2.message.DbException: General error: "java.lang.IllegalStateException: The
 	at org.h2.Driver.connect(Driver.java:69)
 	at java.sql.DriverManager.getConnection(DriverManager.java:664)
 	at java.sql.DriverManager.getConnection(DriverManager.java:247)
-	at com.michaellindvall.pluralsight.orm.EntityManagerImpl.preparedStatementWith(EntityManagerImpl.java:37)
-	at com.michaellindvall.pluralsight.orm.EntityManagerImpl.persist(EntityManagerImpl.java:31)
+	at com.michaellindvall.pluralsight.orm.AbstractEntityManager.preparedStatementWith(EntityManagerImpl.java:37)
+	at com.michaellindvall.pluralsight.orm.AbstractEntityManager.persist(EntityManagerImpl.java:31)
 	at com.michaellindvall.pluralsight.WritingObjects.main(WritingObjects.java:35)
 Caused by: org.h2.jdbc.JdbcSQLException: General error: "java.lang.IllegalStateException: The file is locked: nio:C:/Users/mlin014/Desktop/pluralsight-training/reflectioncourse/db-files/db-pluralsight.mv.db [1.4.197/7]" [50000-197]
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:357)
@@ -44,3 +44,6 @@ select id, age, name from MetamodelWhere id = ? [42102-197]
 2019-08-07 14:21:20 jdbc[3]: exception
 org.h2.jdbc.JdbcSQLException: Table "PERSONWHERE" not found; SQL statement:
 select id, age, name from PersonWhere id = ? [42102-197]
+2019-08-07 15:27:53 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "DROP PERSON[*] "; expected "TABLE, INDEX, USER, SEQUENCE, CONSTANT, TRIGGER, VIEW, ROLE, ALIAS, SCHEMA, ALL, DOMAIN, TYPE, DATATYPE, AGGREGATE, SYNONYM"; SQL statement:
+drop person [42001-197]
