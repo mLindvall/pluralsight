@@ -7,6 +7,7 @@
  */
 package com.michaellindvall.pluralsight.orm;
 
+import com.michaellindvall.pluralsight.annotation.Inject;
 import com.michaellindvall.pluralsight.util.ColumnField;
 import com.michaellindvall.pluralsight.util.Metamodel;
 
@@ -21,8 +22,11 @@ import java.util.concurrent.atomic.AtomicLong;
 /**
  * @author mlindvall
  */
-public abstract class AbstractEntityManager<T> implements EntityManager<T> {
+public class ManagedEntityManager<T> implements EntityManager<T> {
     private AtomicLong idGenerator = new AtomicLong(0L);
+
+    @Inject
+    private Connection connection;
 
     @Override
     public void persist(final T t) throws SQLException, IllegalAccessException {
@@ -74,12 +78,10 @@ public abstract class AbstractEntityManager<T> implements EntityManager<T> {
     }
 
     private PreparedStatementWrapper preparedStatementWith(final String sql) throws SQLException {
-        Connection connection = buildConnection();
         PreparedStatement statement = connection.prepareStatement(sql);
         return new PreparedStatementWrapper(statement);
     }
 
-    public abstract Connection buildConnection() throws SQLException;
 
     private class PreparedStatementWrapper {
         private PreparedStatement statement;

@@ -14,9 +14,6 @@ import java.sql.SQLException;
  * @author mlindvall
  */
 public interface EntityManager<T> {
-    static <T> EntityManager<T> of(Class<?> clss) {
-        return new H2EntityManger<>();
-    }
 
     void persist(T linda) throws SQLException, IllegalAccessException;
 
