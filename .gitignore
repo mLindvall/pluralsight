@@ -147,3 +147,11 @@ buildNumber.properties
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 
+genericscourse/.factorypath
+genericscourse/.classpath
+genericscourse/.project
+genericscourse/.vscode/settings.json
+genericscourse/.vscode/launch.json
+genericscourse/.settings/org.eclipse.m2e.core.prefs
+genericscourse/.settings/org.eclipse.jdt.core.prefs
+genericscourse/.settings/org.eclipse.jdt.apt.core.prefs
