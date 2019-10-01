@@ -67,7 +67,6 @@ public class PersonStorageTest {
         assertEquals(peggyOlson, people.get(1));
     }
 
-
     @Before
     public void setUp() throws Exception
     {
