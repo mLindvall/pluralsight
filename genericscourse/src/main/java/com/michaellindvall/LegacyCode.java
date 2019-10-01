@@ -12,6 +12,11 @@ public class LegacyCode {
         list.add(1);
         list.add(new Object());
 
+        List<Integer> ints = new ArrayList<>();
+        List<String> strings = list;
+        for (String elem : strings) {
+            System.out.println(elem);
+        }
 
         Iterator iterator = list.iterator();
         while(iterator.hasNext()) {
