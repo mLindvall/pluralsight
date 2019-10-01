@@ -12,10 +12,11 @@ public class LegacyCode {
         list.add("def");
         list.add("ghi");
 
-        List<String> strings = list;
-        for (String elem : strings) {
-            System.out.println(elem);
-        }
+        List<Integer> integers = new ArrayList<>();
+        integers.add(1);
+        integers.add(2);
+
+        legacyMethod(integers);
 
         Iterator iterator = list.iterator();
         while(iterator.hasNext()) {
@@ -23,5 +24,9 @@ public class LegacyCode {
             System.out.println(element);
         }
         
+    }
+
+    public static void legacyMethod(List param) {
+
     }
 }
