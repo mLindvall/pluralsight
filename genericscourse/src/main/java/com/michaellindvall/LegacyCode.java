@@ -9,10 +9,9 @@ public class LegacyCode {
     public static void main(String... args) {
         List list = new ArrayList();
         list.add("abc");
-        list.add(1);
-        list.add(new Object());
+        list.add("def");
+        list.add("ghi");
 
-        List<Integer> ints = new ArrayList<>();
         List<String> strings = list;
         for (String elem : strings) {
             System.out.println(elem);
