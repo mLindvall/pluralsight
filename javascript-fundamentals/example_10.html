@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <h3>JavaScript Fundamentals</h3>
+    <form action="/somepath" method="POST" id="user-form">
+        <input name="user" placeholder="User Name" />
+        <span id="user-error"></span>
+        <br />
+        <input name="avatar-file" placeholder="Avatar File" />
+        <span id="avatar-error"></span>
+        <br />
+        <button type="submit">Submit</button>
+    </form>
+
+</body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script>
+    'use strict';
+
+    let form = document.getElementById("user-form");
+    form.addEventListener('submit', event => {
+        let user = form.elements['user'];
+        let userError = document.getElementById('user-error');
+        if (user.value.toLowerCase() === 'mlindvall') {
+            userError.textContent = 'Invalid entry';
+            userError.style.color = 'red';
+            user.style.borderColor = 'red';
+            user.focus();
+        }
+        let avatarFile = form.elements['avatar-file'];
+
+        console.log(user.value, avatarFile.value);
+
+        let posting = {
+            name: user.value, avatar: avatarFile.value
+        }
+
+        let promise = $.post("https://5d9cf8f266d00400145ca19c.mockapi.io/users", posting);
+
+        promise.then(
+            data => console.log('success: ', data),
+            error => console.log('success: ', error)
+        );
+
+        event.preventDefault();
+    });
+
+</script>
+
+</html>
