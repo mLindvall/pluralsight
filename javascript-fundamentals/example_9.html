@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script>
+    'use strict';
+
+    let xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            console.log(this.responseText);
+        }
+    };
+
+    xhttp.open("GET", "https://5d9cf8f266d00400145ca19c.mockapi.io/users", true);
+
+    xhttp.send();
+
+    $.get("https://5d9cf8f266d00400145ca19c.mockapi.io/users",
+        data => console.log('data: ', data)
+    );
+
+    let promise = $.get( "https://5d9cf8f266d00400145ca19c.mockapi.io/users");
+
+    promise.then(
+        data => console.log('success: ', data),
+        error => console.log('error: ', error)
+    );
+
+    let user = {
+        name: 'Benjamin Button',
+        avatar: 'ben.jpg',
+    };
+
+    let post = $.post( "https://5d9cf8f266d00400145ca19c.mockapi.io/users", user);
+    post.then(
+        data => console.log('post data: ', data),
+        error => console.log('error: ', error)
+    )
+</script>
+
+</html>
+
+</html>
