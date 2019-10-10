@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    'use strict';
+    document.addEventListener('click', function () {
+        console.log(this); // prints #document  :: es5 this gets set to the element that received the event
+    });
+
+    document.addEventListener('click', () => console.log(this));
+
+
+    var invoice = {
+        number: 123,
+        process: function () {
+            console.log(this);
+        }
+    };
+    invoice.process();
+
+    var invoice2 = {
+        number: 123,
+        process: () => console.log(this)
+    };
+    invoice2.process();
+
+    var invoice3 = {
+        number: 123,
+        process: function() {
+            return () => console.log(this.number);
+        }
+    };
+    invoice3.process()();
+</script>
+
+</html>
