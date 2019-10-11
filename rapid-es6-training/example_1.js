@@ -93,3 +93,80 @@ var invoice2 = {
     process: () => console.log(this)
 };
 invoice2.process();
+
+
+// default function params
+var getProduct = function(productId = 1000, type = 'software') {
+    console.log(productId + ',' + type);
+};
+getProduct(undefined, 'hardware'); // 1000, hardware
+
+var getTotal = function(price, tax = price* 0.07) {
+    console.log(price + tax);
+};
+
+getTotal(5.00); // 5.35
+
+var baseTax = 0.07;
+var getTotal2 = function(price, tax = price * baseTax) {
+    console.log(price + tax);
+};
+getTotal2(5.00); // 5.35
+
+var generateBaseTax = () => 0.07;
+var getTotal3 = function(price, tax = price * generateBaseTax()) {
+    console.log(price + tax);
+};
+getTotal3(5.00); // 5.35
+
+var getTotal4 = function(price, tax = 0.07) {
+    console.log(arguments.length);
+};
+getTotal4(5.00);
+
+var getTotal5 = function(price = adjustments, adjustments = 1.00) {  
+    console.log(price + adjustments);
+};
+// getTotal5();// javascript doesn't know about the adjustments varible (use before declaration)
+getTotal5(5.00);  // this works and prints 6
+
+var getTotal6 = new Function("price = 20.00", "return price");
+console.log(getTotal6());
+
+// rest and spread
+
+var showCategories = function (productId, ...categories) {
+    console.log(categories instanceof Array);
+};
+showCategories(123,'search', 'advertising');
+
+var showCategories2 = function (productId, ...categories) {
+    console.log(categories);
+};
+showCategories2(123,'search', 'advertising');
+showCategories2(123);
+
+var showCategories3 = function (productId, ...categories) {
+    console.log(arguments.length);
+};
+showCategories3(123,'search', 'advertising'); // prints 3
+
+var showCategories4 = new Function("...categories", "return categories;");
+console.log(showCategories4('search', 'advertising'));
+
+var prices = [12,20,18];
+var maxPrice = Math.max(...prices);
+console.log(maxPrice);
+var newPriceArray = [...prices];
+console.log(newPriceArray);
+
+var newPriceArray2 = Array(...[,,]);
+console.log(newPriceArray2); // [undefined, undefined]
+var newPriceArray3 = [...[,,]];
+console.log(newPriceArray3);// [undefined, undefined]
+
+var maxCode = Math.max(..."43210");
+console.log(maxCode); // prints 4  // the spread will break out a string into individual characters
+
+var codeArray = ["A", ..."BCD", "E"];
+console.log(codeArray); // [ 'A', 'B', 'C', 'D', 'E' ]
