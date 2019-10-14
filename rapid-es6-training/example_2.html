@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <!-- <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script> -->
+
+    <script src="https://google.github.io/traceur-compiler/bin/traceur.js"></script>
+    <script src="https://google.github.io/traceur-compiler/bin/BrowserSystem.js"></script>
+    <!-- <script src="https://google.github.io/traceur-compiler/src/bootstrap.js"></script> -->
+    <script
+        scr="https://raw.githubusercontent.com/ModuleLoader/es6-module-loader/v0.5.4/dist/es6-module-loader.js"></script>
+
+
+
+</head>
+
+<body>
+    <script>
+        System.import('./base.js');
+
+        // when a new constructor function is created without a namespace it gets
+        // placed on the global area
+        function Project() { }
+        console.log(window.Project === Project);
+
+        // when creating a class it doesn't get placed on the window object or global object
+        class Task {}
+        console.log(window.Task === Task);
+        
+    </script>
+</body>
+
+</html>
