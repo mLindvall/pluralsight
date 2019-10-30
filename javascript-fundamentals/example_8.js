@@ -23,12 +23,38 @@ try {
 
 // creating a Promise - temp holder for an asynchronous call
 let promise = new Promise(function(resolve, reject) {
-    setTimeout(resolve, 100, 'someValue');
+    setTimeout(resolve, 1000, 'someValue');
 });
 
+promise.then((r) => {console.log(r); return Promise.resolve("yes");})
+.then((r) => console.log(r))
+.catch((e) => console.log("error", e))
+.finally(() => console.log("finally"));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+let fnc = () => promise;
+async function asyncCall() {
+    console.log("calling");
+    var result = await fnc();
+    console.log(result);
+}
+asyncCall();
+// prints calling
+// then waits a second for the promise to return
+// and prints someValue
+
+
 // promise.then((data) => console.log('success: ', data)).catch((err) => console.error('error: ', err));
-promise.then(
-    value => console.log('success: ', value),
-    error => console.log('error: ', error)
-);
-console.log(promise);

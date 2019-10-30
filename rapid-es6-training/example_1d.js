@@ -13,14 +13,13 @@ console.log(msg); //A
                   //B
                   //C
 
-                  
 console.log(`Invoice Number: ${"INV-" + invoiceNum}`); //Invoice Number: INV-1350
 
 function showMessage(msg) {
     let invoiceNum = '99';
     console.log(msg);
 }
-showMessage(`Invoice Number: ${invoiceNum}`);
+showMessage(`Invoice Number: ${invoiceNum}`); // Invoice Number: 1350
 
 function processInvoice(segments) {
     console.log(segments);

@@ -79,6 +79,9 @@ var getPrice4 = (count, tax) => {
 };
 console.log(getPrice4(2, 0.07));
 
+var getPrice5 = params => ({price: params});
+console.log(getPrice5(2));
+
 
 var invoice = {
     number: 123,
@@ -154,6 +157,13 @@ showCategories3(123,'search', 'advertising'); // prints 3
 var showCategories4 = new Function("...categories", "return categories;");
 console.log(showCategories4('search', 'advertising'));
 
+var myFunction = function(a, b, c) {
+    console.log(a + " - " + b + " - " + c);
+};
+myFunction(..."SAL");
+
+console.log(..."mySAL");
+
 var prices = [12,20,18];
 var maxPrice = Math.max(...prices);
 console.log(maxPrice);
@@ -166,7 +176,11 @@ var newPriceArray3 = [...[,,]];
 console.log(newPriceArray3);// [undefined, undefined]
 
 var maxCode = Math.max(..."43210");
-console.log(maxCode); // prints 4  // the spread will break out a string into individual characters
+console.log(maxCode); // prints 4
+// the spread will break out a string into individual characters
 
 var codeArray = ["A", ..."BCD", "E"];
 console.log(codeArray); // [ 'A', 'B', 'C', 'D', 'E' ]
+
+
+

@@ -1,6 +1,8 @@
 /* jslint node: true */
 'use strict';
 
+var obj = {};
+
 // object literal
 var price = 5.99, quantity = 10;
 var productView = {price, quantity};

@@ -43,7 +43,7 @@ salary = {
 };
 
 let {low1, average1, high1} = salary;
-console.log(high1);
+console.log(high1); // 75000
 
 let {low1: newLow, average1:newAverage, high1: newHigh} = salary;
 console.log(newHigh);
@@ -55,10 +55,9 @@ salary = {
 };
 
 let newLow2, newAverage2, newHigh2;
-
 // {low1: newLow2, average1:newAverage2, high1: newHigh2} = salary; // will not work
 ({low1: newLow2, average1:newAverage2, high1: newHigh2} = salary); // will work
-console.log(newHigh2);
+console.log(newHigh2); // 750001
 
 let [maxCode, minCode] = 'AZ';
 console.log(`min: ${minCode} max: ${maxCode}`);

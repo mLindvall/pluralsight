@@ -32,7 +32,7 @@ let defaultSettigns = {
     name: 'Mike'
 };
 // truthy / falsy
-console.log(userSettings || defaultSettigns);
+console.log(userSettings || defaultSettigns); // { name: 'Mike' }
 
 // relational operators
 // > < >= <=
