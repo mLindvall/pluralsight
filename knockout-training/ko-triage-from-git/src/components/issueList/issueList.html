@@ -1,0 +1,50 @@
+<issue-list-toolbar params="loading: loading,
+                            filter: filter,
+                            onRefresh: refresh.bind($data)"></issue-list-toolbar>
+
+<div id="issue-list-table" class="container">
+  <table class="table">
+    <thead>
+      <tr>
+        <th class="issue-list-col-number">#</th>
+        <th>Title</th>
+        <th>Type/Severity/Affects</th>
+        <th class="issue-list-col-labels">Labels</th>
+        <th class="issue-list-col-score">Score</th>
+      </tr>
+    </thead>
+    <tbody data-bind="foreach: sortedFilteredIssues">
+      <tr data-bind="css: { 'saving-row': isSaving }">
+        <td class="issue-list-col-number">
+          <a data-bind="text: number, attr: { href: htmlUrl }" target="_blank"></a>
+        </td>
+        <td>
+          <a data-bind="text: title, attr: { href: htmlUrl }" target="_blank"></a>
+        </td>
+        <td class="issue-list-col-triagelabel">
+          <div class="cell-filler">
+            <a data-bind="click: !isSaving() && $parent.canEdit && $parent.selectIssue,
+                          attr: { href: (!isSaving() && $parent.canEdit) || null }">
+              <span class="label label-default" data-bind="triageLabel: type"></span>
+              <span class="label label-default" data-bind="triageLabel: severity"></span>
+              <span class="label label-default" data-bind="triageLabel: affected"></span>
+              <span data-bind="visible: $parent.canEdit && !(type() || severity() || affected())">Edit</span>
+            </a>
+          </div>
+        </td>
+        <td data-bind="foreach: unknownLabels">
+          <span class="label label-default" data-bind="text: text, style: { backgroundColor: color }"></span>
+        </td>
+        <td class="issue-list-col-score">
+          <span class="badge" data-bind="text: score"></span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<triage-editor params="issue: selectedIssue"></triage-editor>
+
+<progress-panel params="caption: 'Loading issues&hellip;',
+                       visible: loading,
+                       value: loadingPercentage"></progress-panel>
