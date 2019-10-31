@@ -1,0 +1,75 @@
+<html>
+
+<head>
+    <script src="knockout-3.1.0.js" type="text/javascript"></script>
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js" integrity="sha256-C6CB9UYIS9UJeqinPHWTHVqh/E1uhG5Twh+Y5qFQmYg="
+        crossorigin="anonymous" type="text/javascript"></script>
+    <script src="https://code.jquery.com/ui/1.9.2/jquery-ui.min.js" integrity="sha256-eEa1kEtgK9ZL6h60VXwDsJ2rxYCwfxi40VZ9E0XwoEA="
+        crossorigin="anonymous" type="text/javascript"></script>
+</head>
+
+<body>
+    <h2>Your Reservation</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Customer Name</th>
+                <th>Food Choice</th>
+                <th>Cost</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody data-bind="foreach: locations">
+            <tr>
+                <td data-bind="text: name"></td>
+                <td>
+                    <select data-bind="options: $root.availableFood, value:meal, optionsText: 'foodName'"></select>
+                </td>
+                <td data-bind="text: formattedText"></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <button data-bind="click: addLocation">Reserve new location</button>
+    <script type="text/javascript">
+        function locationRes(name, initialMeal) {
+            var self = this;
+            self.name = name;
+            self.meal = ko.observable(initialMeal);
+            self.formattedText  = "not implemented";
+        }
+
+        function ReservationViewModel() {
+            var self = this;
+
+            // cannot change this data
+            self.availableFood = [
+                { foodName: "Standard (sandwich)", price: 0 },
+                { foodName: "Premium (steak)", price: 29.95 },
+                { foodName: "Luxury (lobster)", price: 199 }
+            ];
+
+            //editable data
+            self.locations = ko.observableArray([
+                new locationRes("John", self.availableFood[0]),
+                new locationRes("Mike", self.availableFood[2])
+            ]);
+
+            self.addLocation = function () {
+                console.log("Adding new location");
+                self.locations.push(new locationRes("", self.availableFood[0]));
+            }
+
+        }
+
+
+
+        ko.applyBindings(new ReservationViewModel());
+
+    </script>
+
+</body>
+
+</html>
