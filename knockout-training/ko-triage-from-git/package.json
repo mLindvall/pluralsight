@@ -10,7 +10,7 @@
   "license": "MIT",
   "homepage": "http://triage.knockoutjs.com",
   "devDependencies": {
-    "deeply": "~0.1.0",
+    "deeply": "~3.1.0",
     "event-stream": "~3.1.0",
     "gulp": "~3.5.6",
     "gulp-clean": "~0.2.4",
