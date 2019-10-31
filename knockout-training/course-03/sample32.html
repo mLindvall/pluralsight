@@ -1,0 +1,46 @@
+<html>
+
+<head>
+    <script src="knockout-3.1.0.js" type="text/javascript"></script>
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js" integrity="sha256-C6CB9UYIS9UJeqinPHWTHVqh/E1uhG5Twh+Y5qFQmYg="
+        crossorigin="anonymous" type="text/javascript"></script>
+    <script src="https://code.jquery.com/ui/1.9.2/jquery-ui.min.js" integrity="sha256-eEa1kEtgK9ZL6h60VXwDsJ2rxYCwfxi40VZ9E0XwoEA="
+        crossorigin="anonymous" type="text/javascript"></script>
+</head>
+
+<body>
+
+   <div class="readout">
+       <h3>What's in the model?</h3>
+        <table>
+            <tr>
+                <td class="label">Text value:</td>
+                <td data-bind="text: stringValue"></td>
+            </tr>
+            <tr>
+                <td class="label">Password:</td>
+                <td data-bind="text: passwordValue"></td>
+            </tr>
+            <tr>
+                <td class="label">Bool value:</td>
+                <td data-bind="text: boolVallue() ? 'True' : 'False'"></td>
+            </tr>
+            <tr>
+                <td class="label">Selected option:</td>
+                <td data-bind="text: selectedOptionValue"></td>
+            </tr>
+            <tr>
+                <td class="label">Multi-selected options:</td>
+                <td data-bind="text: multipleSelectedOptionValues"></td>
+            </tr>
+        </table>
+   </di>
+    <script type="text/javascript">
+
+        ko.applyBindings({ displayInfo: ko.observable(false) });
+
+    </script>
+
+</body>
+
+</html>

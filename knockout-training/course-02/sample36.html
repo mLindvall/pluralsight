@@ -1,0 +1,44 @@
+<html>
+
+<head>
+    <script src="knockout-3.1.0.js" type="text/javascript"></script>
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js" integrity="sha256-C6CB9UYIS9UJeqinPHWTHVqh/E1uhG5Twh+Y5qFQmYg="
+        crossorigin="anonymous" type="text/javascript"></script>
+    <script src="https://code.jquery.com/ui/1.9.2/jquery-ui.min.js" integrity="sha256-eEa1kEtgK9ZL6h60VXwDsJ2rxYCwfxi40VZ9E0XwoEA="
+        crossorigin="anonymous" type="text/javascript"></script>
+</head>
+
+<body>
+
+    <div>
+        <h1>
+            <div data-bind="event: {mouseover: enableDetails, mouseout:disableDetails}">
+                Mouse over me please and watch what happens
+            </div>
+        </h1>
+        <h2>
+            <div data-bind="visible: detailsEnabled">
+                Here are the details you were looking for
+            </div>
+        </h2>
+    </div>
+
+    <script type="text/javascript">
+
+        var viewModel = {
+            detailsEnabled: ko.observable(false),
+            enableDetails: function() {
+                this.detailsEnabled(true);
+            },
+            disableDetails: function() {
+                this.detailsEnabled(false);
+            }
+        }
+
+        ko.applyBindings(viewModel);
+
+    </script>
+
+</body>
+
+</html>

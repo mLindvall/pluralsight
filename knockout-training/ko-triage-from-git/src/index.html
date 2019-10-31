@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Knockout Triage</title>
+    <!-- build:css -->
+      <link href="bower_components/components-bootstrap/css/bootstrap.min.css" rel="stylesheet">
+      <link href="css/styles.css" rel="stylesheet">
+    <!-- endbuild -->
+    <!-- build:js -->
+      <script src="js/requirejs-config.js"></script>
+      <script data-main="js/startup" src="bower_components/requirejs/require.js"></script>
+    <!-- endbuild -->
+  </head>
+  <body>
+    <nav-bar params="route: route"></nav-bar>
+    <issue-list params="triaged: route().triaged"></issue-list>
+
+    <!--
+      Want to see the source code?
+      https://github.com/SteveSanderson/knockout-triage
+    -->
+  </body>
+</html>

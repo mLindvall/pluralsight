@@ -1,0 +1,42 @@
+<html>
+
+<head>
+    <script src="knockout-3.1.0.js" type="text/javascript"></script>
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js" integrity="sha256-C6CB9UYIS9UJeqinPHWTHVqh/E1uhG5Twh+Y5qFQmYg="
+        crossorigin="anonymous" type="text/javascript"></script>
+    <script src="https://code.jquery.com/ui/1.9.2/jquery-ui.min.js" integrity="sha256-eEa1kEtgK9ZL6h60VXwDsJ2rxYCwfxi40VZ9E0XwoEA="
+        crossorigin="anonymous" type="text/javascript"></script>
+</head>
+
+<body>
+
+    <h1>
+        <ul data-bind="foreach: places">
+            <li>
+                <span data-bind="text: $data"></span>
+                <button data-bind="click: $parent.removePlace">Remove Place</button>
+            </li>
+        </ul>
+    </h1>
+    <script type="text/javascript">
+      
+      function viewModel() {
+          var self = this;
+          self.places = ko.observableArray(["London", "NY", "Paris", "Tokyo", "LA", "Milan"]);
+
+          self.removePlace = function(place) {
+              self.places.remove(place);
+          }
+
+          addPlace = function(value) {
+              self.places.push(value);
+          }
+      };
+
+      ko.applyBindings(new viewModel());
+
+    </script>
+
+</body>
+
+</html>
