@@ -88,6 +88,9 @@ console.log(pattern6.test('800900')); // true
 let pattern7 = /900/yg;
 console.log(pattern7.flags); // <- new flag to see what flags are set // => gy (order will be gimuy (these are regext flags))
 
+// Here is the URL to look at alvailable regex flags
+// https://javascript.info/regexp-introduction#flags
+
 let fn = function calc() {
     return 0;
 };
