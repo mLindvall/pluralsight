@@ -62,3 +62,55 @@ console.log(Math.cbrt(27)); // 3
 
 console.log(Math.trunc(27.1)); // 27
 console.log(Math.trunc(-27.9)); // -27
+
+let pattern = /\u{1f3c4}/;
+console.log(pattern.test('🏄')); // false
+
+let pattern2 = /\u{1f3c4}/u; // <- use the u pattern to test for unicode
+console.log(pattern2.test('🏄')); // true
+
+let pattern3 = /^.Surfer/;
+console.log(pattern3.test('🏄Surfer')); // false
+
+let pattern4 = /^.Surfer/u; // <- same as above
+console.log(pattern4.test('🏄Surfer')); // true
+
+let pattern5 = /900/y; // <- the y flag search from the last index and the last index only
+console.log(pattern5.lastIndex); // 0
+console.log(pattern5.test('800900')); // false
+console.log(pattern4.test('🏄Surfer')); // true
+
+let pattern6 = /900/y; // <- the y flag search from the last index and the last index only
+pattern6.lastIndex = 3;
+console.log(pattern6.lastIndex); // 3
+console.log(pattern6.test('800900')); // true
+
+let pattern7 = /900/yg;
+console.log(pattern7.flags); // <- new flag to see what flags are set // => gy (order will be gimuy (these are regext flags))
+
+let fn = function calc() {
+    return 0;
+};
+console.log(fn.name); // calc
+
+
+let fn2 = function() {
+    return 0;
+};
+console.log(fn2.name); // fn2
+
+let newFn = fn2;
+console.log(newFn.name); // fn2
+
+class Calculator {
+    constructor() {}
+    add() {}
+}
+let c = new Calculator();
+console.log(Calculator.name); // Calculator
+console.log(c.add.name); // add
+console.log(c.name); // undefined
+
+/*
+    Function.name isn't writable BUT it's configurable with Object.defineProperty()
+*/
