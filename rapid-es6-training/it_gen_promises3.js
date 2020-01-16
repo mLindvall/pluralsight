@@ -81,7 +81,7 @@ function *process8() {
     yield 42;
     yield* [1,2,3];
 }
-let it8 = process7();
+let it8 = process8();
 console.log(it8.next().value); // 42
 console.log(it8.next().value); // 1
 console.log(it8.next().value); // 2
